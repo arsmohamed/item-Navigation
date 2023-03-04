@@ -1,12 +1,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject private var model = Model()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            List {
+                ForEach(model.meals) { item in
+                    Text(item.name)
+                }
+            }
         }
     }
 }
